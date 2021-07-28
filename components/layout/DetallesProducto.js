@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { es } from 'date-fns/locale';
 import Link from 'next/link';
+import { css } from '@emotion/react';
 
 const Producto = styled.li`
     padding: 4rem;
@@ -79,11 +80,6 @@ const Comentarios = styled.div`
     }
 `;
 
-const Imagen = styled.img`
-    width:200px;
-
-`;
-
 const DetallesProducto = ({producto}) => {
 
     const {id, comentarios,creado,descripcion, empresa, nombre, url, urlimagen, votos} = producto;
@@ -92,7 +88,9 @@ const DetallesProducto = ({producto}) => {
         <Producto>
             <DescripcionProducto>
                 <div>
-                    <Imagen src={urlimagen} />
+                    <img css={css`
+                        width:200px;
+                    `} src={urlimagen} />
                 </div>
                 <div>
                     <Link href="/productos/[id]" as={`/productos/${id}`}>
